@@ -1,0 +1,480 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+%%%%% Matrix stretcher
+% use it as:
+%\begin{pmatrix}[1.5]
+% ...
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep%
+  \let\@ifnextchar\new@ifnextchar%
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\extrafootertext[1]{%
+    \bgroup
+    \renewcommand\thefootnote{\fnsymbol{footnote}}%
+    \renewcommand\thempfootnote{\fnsymbol{mpfootnote}}%
+    \footnotetext[0]{#1}%
+    \egroup
+}
+
+
+%%%%%%%%%%%%% Colors %%%%%%%%%%%%%
+\usepackage[dvipsnames]{xcolor}
+
+\definecolor{C0}{HTML}{1d1d1d}
+\definecolor{C1}{HTML}{1e3668}
+\definecolor{C2}{HTML}{199d8b}
+\definecolor{C3}{HTML}{d52f4c}
+\definecolor{C4}{HTML}{5ab2d6}
+\definecolor{C5}{HTML}{ffb268}
+\definecolor{C6}{HTML}{ff7300} % for commenting - {fire orange}dd571c
+\definecolor{C7}{HTML}{777b7e} % for remarks - {steel grey}
+\color{C0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%% Fonts %%%%%%%%%%%%% 
+%\usepackage{fontspec}
+\usepackage[no-math]{fontspec} % for text
+
+
+\emergencystretch=8pt
+\hyphenpenalty=1000 % default 50
+\tolerance=800      % default 200
+%\righthyphenmin=4
+%\lefthyphenmin=4
+
+%%% Text Font: Vollkorn + Math Font: Latin Modern (default) %%%
+\setmainfont{Vollkorn}[
+UprightFont = Vollkorn-Regular,
+ItalicFont =Vollkorn-Italic, 
+BoldItalicFont={Vollkorn-BoldItalic},
+BoldFont = Vollkorn-Bold,
+RawFeature=+lnum,
+WordSpace=1.7,
+] 
+
+% We need this for math font packages other than latin modern
+% \usepackage{unicode-math}        % for math
+
+%%% Text Font: Palatino + Math Font: Asana-Math %%%
+%\setmainfont{Palatino}[
+%BoldFont = Palatino-Bold,
+%ItalicFont = Palatino-Italic,
+%BoldItalicFont={Palatino-BoldItalic},
+%RawFeature=+lnum,
+%WordSpace=1.7,
+%]
+%\setmathfont{asana-math}
+
+%%% Text Font: Arno Pro + Math Font: Minion Pro %%%
+%\setmainfont{Arno Pro}[
+%UprightFont = *-Regular,
+%ItalicFont = Vollkorn-Italic, 
+%BoldItalicFont={*-BoldItalic},
+%BoldFont = *-Bold,
+%RawFeature=+lnum,
+%WordSpace=1.7,
+%Scale= 1.1
+%] 
+% Minion Pro is too expensive
+
+%%% Math Fonts %%%
+%\setmathfont{Vollkorn}
+%\setmathfont{Latin Modern Math}
+%\setmathfont{TeX Gyre Pagella Math}
+%\setmathfont{TeX Gyre Termes Math}
+%\setmathfont{TeX Gyre DejaVu Math}
+%\setmathfont[Scale=MatchLowercase]{DejaVu Math TeX Gyre}
+%\setmathfont{XITS Math}
+%\setmathfont{Libertinus Math}
+%\setmathfont[Scale=MatchUppercase]{Asana Math}
+%\setmathfont{STIX Two Math}
+
+%\usepackage{kpfonts-otf}
+%\setmathfont{KpMath-Regular.otf}[version=regular]
+%\setmathfont{KpMath-Bold.otf}[version=bold]
+%\setmathfont{KpMath-Semibold.otf}[version=semibold]
+%\setmathfont{KpMath-Sans.otf}[version=sans]
+%\setmathfont{KpMath-Light.otf}[version=light]
+
+
+%%% CJK Fonts %%%
+\usepackage[scale=.78]{luatexja-fontspec}
+\setmainjfont{BabelStone Han}[AutoFakeBold]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% This package simplifies the insertion of external multi-page PDF or PS documents.
+\usepackage{pdfpages}
+
+% cref
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=C4,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    }
+
+\usepackage[nameinlink,noabbrev,capitalize]{cleveref}
+% \crefname{ineq}{}{}
+% \crefname{equation}{}{}
+% \creflabelformat{ineq}{#2{\textup{(1)}}#3}
+% \creflabelformat{equation}{#2\textup{(#1)}#3}
+
+%%%%%%%%%%%%% Environments %%%%%%%%%%%%%%%%
+%amsthm has three separate predefined styles:	
+%
+%\theoremstyle{plain} is the default. it sets the text in italic and adds extra space 
+%above and below the \newtheorems listed below it in the input. it is recommended for
+%theorems, corollaries, lemmas, propositions, conjectures, criteria, and (possibly;
+%depends on the subject area) algorithms.
+%
+%\theoremstyle{definition} adds extra space above and below, but sets the text in 
+%roman. it is recommended for definitions, conditions, problems, and examples; i've 
+%also seen it used for exercises.
+%
+%\theoremstyle{remark} is set in roman, with no additional space above or below. it 
+%is recommended for remarks, notes, notation, claims, summaries, acknowledgments, 
+%cases, and conclusions.
+
+%%%  theorem-like environment %%%
+\theoremstyle{plain} % default theorem style
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{property}[theorem]{Property}
+
+\newtheorem{definition}[theorem]{Definition}
+
+%%% definition-like environment %%%
+%\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Problem}
+
+
+%%% framed package is great %%%
+\usepackage{framed}
+\newenvironment{solution}
+{\color{C2}\normalfont\begin{framed}\begingroup\textbf{Solution:} }
+  {\endgroup\end{framed}}
+
+\newtheoremstyle{remark}% name of the style to be used
+  {}% measure of space to leave above the theorem. E.g.: 3pt
+  {}% measure of space to leave below the theorem. E.g.: 3pt
+  {\color{C3}}% name of font to use in the body of the theorem
+  {}% measure of space to indent
+  {\color{C3}\bfseries}% name of head font
+  {.}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {}
+\theoremstyle{remark}
+\newtheorem{remarkx}[theorem]{Remark}
+\newenvironment{remark}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\remarkx}
+  {\popQED\endremarkx}
+  
+\newenvironment{point}
+  {\O~~}
+  {}
+
+\usepackage{thmtools}
+\usepackage{thm-restate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% This package is for the long equal sign \xlongequal{}
+\usepackage{extarrows}
+
+
+% Page Formatting
+\usepackage[
+    paper=a3paper,
+    inner=22mm,         % Inner margin
+    outer=22mm,         % Outer margin
+    bindingoffset=0mm, % Binding offset
+    top=28mm,           % Top margin
+    bottom=22mm,        % Bottom margin
+    %showframe,         % show how the type block is set on the page
+]{geometry}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{.7em}
+
+
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\setlist{topsep=0pt}
+
+\usepackage{bm}
+
+\usepackage[font=scriptsize,labelfont=bf]{caption}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,breaklines=true}
+% \setlength{\parskip}{1em}
+% \setlength{\parindent}{0em}
+\usepackage{dsfont}
+\newcommand{\bOne}{\mathds{1}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\CoV}{\operatorname{Co\mathbb{V}}}
+
+% header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\small   \bfseries Homework}
+\fancyhead[C]{\small   \bfseries Fall 2023}
+\fancyhead[R]{\small   \bfseries Zhou}
+
+
+\begin{document}
+
+\begin{center}
+	\text{\Large{Times Series Foundamentals
+		}}
+
+	{\text{Kaiwen Zhou}}
+\end{center}
+\vspace{2em}
+
+\tableofcontents
+
+\section{Topic: Stationary Process}
+
+\begin{problem}
+A stationary process $\left\{Y_{t}\right\}$ is given, show that:
+\begin{enumerate}[label = (\alph*)]
+	\item $Z_t=\left(Y_{t}-Y_{t-1}\right)$ is a stationary process.
+	\item $Z_{t}^{\prime} =\left(Y_{t}-Y_{t-d}\right)$ is a stationary process
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	\begin{enumerate}[label = (\alph*)]{
+		\item  Since $\{Y_{t}\}$ is stationary, we have
+		      \[
+			      \EE [Y_{t}^{2}] < \infty; \quad \EE[Y_{t}] = m, m\in \mathbb{R}, \forall t; \quad Cov[Y_{t}, Y_{s}] = \gamma_{Y}(r,s) = \gamma_{Y}(r+t,s+t) \equiv \gamma_{Y}(r-s),  \forall t.
+		      \]
+
+		      By the definition of the stationary process, we need to verify the three criterions. We have
+		      \begin{enumerate}[label=(\roman*)]{
+			      \item \textbf{Square-Integrable:}
+			            \begin{align*}
+				            \EE[Z_{t}^{2}] & = \EE[(Y_{t}-Y_{t-1})^{2}]                                 \\
+				                           & = \EE[Y_{t}^{2}]+\EE[Y_{t-1}^{2}] - 2\EE[Y_{t}Y_{t-1}]     \\
+				                           & \le \EE[Y_{t}^{2}]+\EE[Y_{t-1}^{2}] + 2|\EE[Y_{t}Y_{t-1}]| \\
+				            \text{ AM-GM }\Longrightarrow
+				                           & \le 2\EE[Y_{t}^{2}]+2\EE[Y_{t-1}^{2}]                      \\
+				                           & < \infty + \infty = \infty
+			            \end{align*}
+			      \item \textbf{Constant Mean:}
+			            $$
+				            \EE[Z_{t}] = \EE[Y_{t}-Y_{t-1}] = \EE[Y_{t}]-\EE[Y_{t-1}] = m - m = 0
+			            $$
+			      \item \textbf{Time independent autocovariance:}
+			            \begin{align*}
+				            \gamma_{Y}(r,s) & = Cov[Z_{r}, Z_{s}]                                                                                                      \\
+				                            & = Cov[Y_{r}-Y_{r-1}, Y_{s}-Y_{s-1}]                                                                                      \\
+				                            & = \EE[\left(Y_{r}-Y_{r-1} + \EE[Y_{r}-Y_{r-1}]\right)\left(Y_{s}-Y_{s-1} + \EE[Y_{s}-Y_{s-1}]\right)]                    \\
+				                            & = \EE[\left((Y_{r}-\EE[Y_{r}]) + (Y_{r-1}-\EE[Y_{r-1}])\right)\left((Y_{s}-\EE[Y_{s}]) + (Y_{s-1}-\EE[Y_{s-1}]) \right)] \\
+				                            & = \EE[(Y_{r}-\EE[Y_{r}])(Y_{s}-\EE[Y_{s}])] + \EE[(Y_{r-1}-\EE[Y_{r-1}])(Y_{s-1}-\EE[Y_{s-1}])]                          \\
+				                            & \quad + \EE[(Y_{r}-\EE[Y_{r}])(Y_{s-1}-\EE[Y_{s-1}])] + \EE[(Y_{r-1}-\EE[Y_{r-1}])(Y_{s}-\EE[Y_{s}])]                    \\
+				                            & = Cov[Y_{r}, Y_{s}] + Cov[Y_{r-1}, Y_{s-1}] + Cov[Y_{r}, Y_{s-1}] + Cov[Y_{r-1}, Y_{s}]                                  \\
+				                            & = \gamma_{Y}(r, s) + \gamma_{Y}(r-1, s-1) + \gamma_{Y}(r, s-1) + \gamma_{Y}(r-1, s)                                      \\
+				                            & = \gamma_{Y}(r-s) + \gamma_{Y}(r-s) + \gamma_{Y}(r-s+1) + \gamma_{Y}(r-s-1)                                              \\
+				                            & = 2\gamma_{Y}(r-s) + \gamma_{Y}(r-s+1) + \gamma_{Y}(r-s-1) \text{ independent of the value of } t
+			            \end{align*}
+			            }\end{enumerate}
+		      Therefore, by the definition of the stationary process, we can conclude that $Z_t=\left(Y_{t}-Y_{t-1}\right)$ is a stationary process.
+
+		\item By the definition of the stationary process, we need to verify the three criterions. We have
+		      \begin{enumerate}[label=(\roman*)]{
+			      \item  \textbf{Square-integrable:}
+			            \begin{align*}
+				            \EE[Z_{t}^{2}] & = \EE[(Y_{t}-Y_{t-d})^{2}]                                 \\
+				                           & = \EE[Y_{t}^{2}]+\EE[Y_{t-d}^{2}] - 2\EE[Y_{t}Y_{t-d}]     \\
+				                           & \le \EE[Y_{t}^{2}]+\EE[Y_{t-d}^{2}] + 2|\EE[Y_{t}Y_{t-d}]| \\
+				            \text{ AM-GM }\Longrightarrow
+				                           & \le 2\EE[Y_{t}^{2}]+2\EE[Y_{t-d}^{2}]                      \\
+				                           & < \infty + \infty = \infty
+			            \end{align*}
+			      \item \textbf{Constant Mean:}
+			            $$
+				            \EE[Z_{t}] = \EE[Y_{t}-Y_{t-d}] = \EE[Y_{t}]-\EE[Y_{t-d}] = m - m = 0.
+			            $$
+			      \item \textbf{Time independent autocovariance:}
+			            \begin{align*}
+				            \gamma_{Y}(r,s) & = Cov[Z_{r}, Z_{s}]                                                                                                  \\
+				                            & = Cov[Y_{r}-Y_{r-d}, Y_{s}-Y_{s-d}]                                                                                  \\
+				                            & = \EE[\left(Y_{r}-Y_{r-d} + \EE[Y_{r}-Y_{r-d}]\right)\left(Y_{s}-Y_{s-d} + \EE[Y_{s}-Y_{s-d}]\right)]                \\
+				                            & = \EE[\left((Y_{r}-\EE[Y_{r}])+(Y_{r-d}-\EE[Y_{r-d}])\right)\left((Y_{s}-\EE[Y_{s}])+(Y_{s-d}-\EE[Y_{s-d}]) \right)] \\
+				                            & = \EE[(Y_{r}-\EE[Y_{r}])(Y_{s}-\EE[Y_{s}])] + \EE[(Y_{r-d}-\EE[Y_{r-d}])(Y_{s-d}-\EE[Y_{s-d}])]                      \\
+				                            & \quad + \EE[(Y_{r}-\EE[Y_{r}])(Y_{s-d}-\EE[Y_{s-d}])]+ \EE[(Y_{r-d}-\EE[Y_{r-d}])(Y_{s}-\EE[Y_{s}])]                 \\
+				                            & = Cov[Y_{r}, Y_{s}] + Cov[Y_{r-d}, Y_{s-d}] + Cov[Y_{r}, Y_{s-d}] + Cov[Y_{r-d}, Y_{s}]                              \\
+				                            & = \gamma_{Y}(r, s) + \gamma_{Y}(r-d, s-d) + \gamma_{Y}(r, s-d) + \gamma_{Y}(r-d, s)                                  \\
+				                            & = \gamma_{Y}(r-s) + \gamma_{Y}(r-s) + \gamma_{Y}(r-s) + \gamma_{Y}(r-s)                                              \\
+				                            & = 2\gamma_{Y}(r-s) + \gamma_{Y}(r-s+d) + \gamma_{Y}(r-s-d)  \text{ independent of the value of } t
+			            \end{align*}
+			            }\end{enumerate}
+		      Therefore, by the definition of the stationary process, we can conclude that $Z_t=\left(Y_{t}-Y_{t-d}\right)$ is a stationary process.
+
+		      }\end{enumerate}
+\end{solution}
+
+
+\section{Topic: Moving Average, White Noise}
+\begin{problem}
+Write the autocovariance function for the $MA(1)$ process and show that $MA(1)$ is a stationary process.
+\end{problem}
+
+\begin{solution}
+	By definition, the $MA(1)$ process is defined to be $Y_{t} = Z_{t} + \theta Z_{t-1}$ where $\{Z_{t}\}\sim WN(0, \sigma^{2})$ and $\theta \in \mathbb{R}$ is a constant.
+
+	By the definition of the stationary process, we need to verify the three criterions. We have
+	\begin{enumerate}[label=(\roman*)]{
+		\item  \textbf{Square-integrable:}
+		      $$
+			      \EE[Y_{t}^{2}] = \EE[(Z_{t} + \theta Z_{t-1})^{2}] = \EE[Z_{t}^{2}]+\theta^{2}\EE[Z_{t-1}^{2}] + 2\theta\EE[Z_{t}Z_{t-1}] \xlongequal{Z\sim WN(0, \sigma^{2})} \EE[Z_{t}^{2}]+\theta^{2}\EE[Z_{t-1}^{2}] = \sigma^{2}+\theta^{2}\sigma^{2} = (1+\theta^{2})\sigma^{2} <\infty
+		      $$
+		\item \textbf{Constant Mean:}
+		      $$
+			      \EE[Y_{t}] = \EE[Z_{t} + \theta Z_{t-1}] = \EE[Z_{t}]+ \theta\EE[Z_{t-1}]\xlongequal{Z\sim WN(0, \sigma^{2})} 0
+		      $$
+		\item \textbf{Time independent autocovariance:}
+		      \begin{align*}
+			      \gamma_{Y}(r,s) & = Cov[Y_{r}, Y_{s}]                                                                                                                       \\
+			                      & = Cov[Z_{r} + \theta Z_{r-1}, Z_{s} + \theta Z_{s-1}]                                                                                     \\
+			                      & = \EE[\left(Z_{r} + \theta Z_{r-1} + \EE[Z_{r} + \theta Z_{r-1}]\right)\left(Z_{s} + \theta Z_{s-1} + \EE[Z_{s} + \theta Z_{s-1}]\right)] \\
+			                      & = \EE[\left((Z_{r}-\EE[Z_{r}])+\theta(Z_{r-1}-\EE[Z_{r-1}])\right)\left((Z_{s}-\EE[Z_{s}])+\theta(Z_{s-1}-\EE[Z_{s-1}]) \right)]          \\
+			                      & = \EE[(Z_{r}-\EE[Z_{r}])(Z_{s}-\EE[Z_{s}])] + \theta^{2}\EE[(Z_{r-1}+\EE[Z_{r-1}])(Z_{s-1}-\EE[Z_{s-1}])]                                 \\
+			                      & \quad + \theta\EE[(Z_{r}-\EE[Z_{r}])(Z_{s-1}-\EE[Z_{s-1}])]+ \theta\EE[(Z_{r-1}-\EE[Z_{r-1}])(Z_{s}-\EE[Z_{s}])]                          \\
+			                      & = Cov[Z_{r}, Z_{s}] + \theta^{2} Cov[Z_{r-1}, Z_{s-1}] + \theta Cov[Z_{r}, Z_{s-1}] + \theta Cov[Z_{r-1}, Z_{s}]                          \\
+			                      & = \gamma_{Z}(r, s) + \theta^{2}\gamma_{Z}(r-1, s-1) + \theta\gamma_{Z}(r, s-1) + \theta\gamma_{Z}(r-1, s)                                 \\
+			                      & = \gamma_{Z}(r-s) + \theta^{2}\gamma_{Z}(r-s) + \theta\gamma_{Z}(r-s+1)+ \theta\gamma_{Z}(r-s-1)                                          \\
+			                      & = \begin{cases}
+				                          (1 + \theta^{2})\sigma^{2} & \text{ if } r = s   \\
+				                          \theta\sigma^{2}           & \text{ if } r = s-1 \\
+				                          \theta\sigma^{2}           & \text{ if } r = s+1 \\
+				                          0                          & \text{ otherwise }
+			                          \end{cases}  \longrightarrow \text{ independent of the value of } t
+		      \end{align*}
+		      }\end{enumerate}
+	Therefore, by the definition of the stationary process, we can conclude that the $MA(1)$ process $Y_{t} = Z_{t} + \theta Z_{t-1}$ is a stationary process, and its autocovariance is
+	$$
+		\gamma_{Y}(r,s) = \begin{cases}
+			(1 + \theta^{2})\sigma^{2} & \text{ if } r = s   \\
+			\theta\sigma^{2}           & \text{ if } r = s-1 \\
+			\theta\sigma^{2}           & \text{ if } r = s+1 \\
+			0                          & \text{ otherwise }
+		\end{cases}
+	$$
+\end{solution}
+
+\section{Topic: Classical Decomposition}
+\begin{problem}
+Load the file ``Data\_For\_HW1.xls'' file from the course website.
+\begin{enumerate}[label = (\alph*)]
+	\item Plot the time series.
+	\item Obtain the equation for its linear trend, de-trend the original time series, and plot it.
+	\item Plot the sample autocorrelation function for the de-trended time series. What process do you recommend to model the de-trended time series?
+	\item Plot the first difference of the original time series.
+	\item Plot the sample autocorrelation function for the differenced time series. What process model do you recommend for the differenced time series?
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution} For the plots and code see the attached jupyter notebook, \texttt{Time Series and Statistical Arbitrage HW1.ipynb}.
+\end{solution}
+
+
+\section{Topic: Generalized Linear Process}
+\begin{problem}\label{prob:generalized linear process}
+Let $\left\{Y_{t}\right\}$ be a stationary time series with mean $0$ and covariance function $\gamma_{Y}$. If $\sum_{j=-\infty}^{\infty}\left|\psi_{j}\right|<\infty$ then show that the time series
+
+$$
+	X_{t}=\sum_{j=-\infty}^{\infty} \psi_{j} Y_{t-j}
+$$
+
+is stationary with mean $0$ and autocovariance function
+
+$$
+	\gamma_{X}(h)=\sum_{j=-\infty}^{\infty} \sum_{k=-\infty}^{\infty} \psi_{j} \psi_{k} \gamma_{Y}(h+k-j)
+$$
+\end{problem}
+
+\begin{solution}
+	By the definition of the stationary process, we need to verify the three criterions. We have
+	\begin{enumerate}[label=(\roman*)]{
+		\item  \textbf{Square-integrable:}
+		      \begin{align*}
+			      \EE[X_{t}^{2}] & = \EE[(\sum_{j=-\infty}^{\infty} \psi_{j} Y_{t-j})^{2}]                                                                          \\
+			                     & = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty}\psi_{j}\psi_{k}\EE[Y_{t-j}Y_{t-k}]                                          \\
+			                     & =\sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty}\psi_{j}\psi_{k}\left(Cov(Y_{t-j}, Y_{t-k}) + \EE[Y_{t-j}]\EE[Y_{t-k}]\right) \\
+			      \EE[Y_{t}] = 0, \forall t\in \mathbb{Z} \Longrightarrow
+			                     & = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty}\psi_{j}\psi_{k}\gamma_{Y}(k-j)                                              \\
+			                     & \le \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty}|\psi_{j}||\psi_{k}||\gamma_{Y}(k-j)|                                      \\
+			      \gamma_{Y}(0)\ge |\gamma_{Y}(f)|, \forall h\in \mathbb{Z} \Longrightarrow
+			                     & \le \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty}|\psi_{j}||\psi_{k}|\gamma_{Y}(0)                                          \\
+			                     & = \left(\sum_{j=-\infty}^{\infty}|\psi_{j}|\right)^{2}\gamma_{Y}(0)                                                              \\
+			      \sum_{j=-\infty}^{\infty}\left|\psi_{j}\right|<\infty\Longrightarrow
+			                     & <\infty
+		      \end{align*}
+		\item \textbf{Constant Mean:}
+		      $$
+			      \EE[X_{t}] = \EE[\sum_{j=-\infty}^{\infty} \psi_{j} Y_{t-j}] = \sum_{j=-\infty}^{\infty} \psi_{j} \EE[Y_{t-j}] \xlongequal{\EE[Y_{t}] = 0, \forall t\in \mathbb{Z}} \sum_{j=-\infty}^{\infty} \psi_{j} \cdot 0 = 0
+		      $$
+		\item \textbf{Time independent autocovariance:}
+		      \begin{align*}
+			      \gamma_{X}(t+h,t) & = Cov[X_{t+h}, X_{t}]                                                                                                               \\
+			                        & = \EE[X_{t+h}X_{t}] - \EE[X_{t+h}]\EE[X_{t}]                                                                                        \\
+			      \EE[X_{t}] = 0, \forall t\in\mathbb{Z}\Longrightarrow
+			                        & = \EE[X_{t+h}X_{t}]                                                                                                                 \\
+			                        & = \EE\left[\left(\sum_{j=-\infty}^{\infty} \psi_{j} Y_{t+h-j}\right) \left(\sum_{k=-\infty}^{\infty} \psi_{k} Y_{t-k}\right)\right] \\
+			                        & = \EE\left[\sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} \psi_{j} \psi_{k}Y_{t+h-j}Y_{t-k}\right]                              \\
+			                        & = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} \psi_{j} \psi_{k}\EE\left[Y_{t+h-j}Y_{t-k}\right]                              \\
+			      \EE[Y_{t}] = 0, \forall t\in \mathbb{Z} \Longrightarrow
+			                        & = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} \psi_{j} \psi_{k}Cov[Y_{t+h-j}Y_{t-k}]                                         \\
+			                        & = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} \psi_{j} \psi_{k}\gamma_{Y}(t+h-j, t-k)                                        \\
+			      \{Y_{t}\} \text{ is stationary } \Longrightarrow
+			                        & = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} \psi_{j} \psi_{k}\gamma_{Y}(h+k-j) \text{ independent of the value of } t
+		      \end{align*}
+		      }\end{enumerate}
+	Therefore, by the definition of the stationary process, we can conclude that the generalized linear process defined by $X_{t}=\sum_{j=-\infty}^{\infty} \psi_{j} Y_{t-j}$ is stationary with mean $0$ provided $\sum_{j=-\infty}^{\infty}\left|\psi_{j}\right|<\infty$, and its autocovariance is
+	\begin{align}
+		\gamma_{X}(t+h,t) = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} \psi_{j} \psi_{k}\gamma_{Y}(h+k-j) \label{eq:generalized linear process autocovariance}
+	\end{align}
+\end{solution}
+
+\section{Topic: Linear Process}
+\begin{problem}
+In Problem 4, when $\left\{X_{t}\right\}$ is a linear process (i.e. $\left\{Y_{t}\right\}=\{Z_t\}$), show that:
+
+$$
+	\gamma_{X}(h)=\sum_{j=-\infty}^{\infty} \psi_{j} \psi_{j+h} \sigma^{2}
+$$
+\end{problem}
+
+\begin{solution}
+	With the result proved in \cref{prob:generalized linear process}, we just need to  substitute $\gamma_{Y}(h+k-j)$ in \cref{eq:generalized linear process autocovariance} with $\gamma_{Z}(h+k-j)$, and we obtain
+	$$
+		\gamma_{X}(t+h,t) = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} \psi_{j} \psi_{k}\gamma_{Z}(h+k-j) \xlongequal[\gamma_{Z}(h+k-j)= 0 \text{ if } h+k-j \ne 0]{Z\sim WN(0, \sigma^{2})} \sum_{j=-\infty}^{\infty} \psi_{j} \psi_{j-h}\gamma_{Z}(0) = \sum_{j=-\infty}^{\infty} \psi_{j} \psi_{j-h}\sigma^{2} \xlongequal{j = j-h} \sum_{j=-\infty}^{\infty} \psi_{j+h} \psi_{j}\sigma^{2}
+	$$
+	which is exactly what we desired.
+\end{solution}
+
+
+\end{document}
+
