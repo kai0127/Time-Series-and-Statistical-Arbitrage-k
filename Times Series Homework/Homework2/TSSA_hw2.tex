@@ -235,55 +235,266 @@ WordSpace=1.7,
 \begin{document}
 
 \begin{center}
-    \text{\Large{Time Series Foundamentals
-}}
+  \text{\Large{Time Series Foundamentals
+    }}
 
-    {\text{Kaiwen Zhou}}
+  {\text{Kaiwen Zhou}}
 \end{center}
 \vspace{2em}
 
 \tableofcontents
 
-\section{Topic: xxxx}
+\section{Topic: Mean Squared Prediction}
+
+Suppose $\left\{X_t\right\}$ is a stationary process with mean $\mu$, and auto-covariance function $\gamma_X(h)$.
+Our goal is to predict: $X_{n+h}$ using observations $X_1, X_2, \ldots, X_n$.
+
+We define the \textbf{Best Linear Predictor} to be the one minimizes the Mean Squared Prediction Error (MSPE):
+$$
+  \widehat{X}_{n+h}=E\left[X_{n+h} \mid X_1, \cdots, X_n\right] = P_n X_{n+h} : =a_0^*+a_1^* X_n+ \cdots +a_n^* X_1 = a_0 + \mathbf{a}_n^\top \mathbf{x}_n = \arg\min_{a_0, \mathbf{a}_n} \EE\left[\left(X_{n+h}-a_0 - \mathbf{a}_n^\top \mathbf{x}_n\right)^2\right] = \arg\min_{a_0, \mathbf{a}_n} L(a_0, \mathbf{a}_n)
+$$
+where $\mathbf{a}_n = (a_1, \ldots, a_n) \in\mathbb{R}^n$, $\mathbf{x}_n = (x_n, \ldots, x_1)\in\mathbb{R}^n$, $P$ in $P_n$ stands for ``Predictor'' and $n$ suggests that we are using $n$ most recent observations.
+
+To simplify our computation, we define $\bOne = (1,\ldots, 1) \in\mathbb{R}^n$,
+$\bm{\gamma}_n(h) = \begin{bmatrix}\gamma_X(h)   \\
+    \gamma_X(h+1) \\
+    \vdots        \\
+    \gamma_X(h+n-1)\end{bmatrix}\in\mathbb{R}^n$,
+$\Gamma_n = \begin{bmatrix}
+    \gamma_X(0)   & \gamma_X(1)   & \cdots & \gamma_X(n-1) \\
+    \gamma_X(1)   & \gamma_X(0)   & \cdots & \gamma_X(n-2) \\
+    \vdots        & \vdots        & \ddots & \vdots        \\
+    \gamma_X(n-1) & \gamma_X(n-2) & \cdots & \gamma_X(0)
+  \end{bmatrix}\in\mathbb{R}^{n\times n}$.
+
+Taking the partial derivatives of $L$, we obtain
+$$
+  0 = \frac{\partial L}{\partial a_0}
+  = \EE\left[\frac{\partial }{\partial a_0}(X_{n+h}-a_0-\mathbf{a}_n^\top \mathbf{x}_n)^2\right]
+  = \EE\left[-2(X_{n+h}-a_0-\mathbf{a}_n^\top \mathbf{x}_n)\right] = 2(a_0-\mu-\mathbf{a}_n^\top\bOne)
+  \Longrightarrow a_0^* = \mu(1-\mathbf{a}_n^\top\bOne)
+$$
+and
+\begin{align*}
+  \bm{0} = \frac{\partial L}{\partial \mathbf{a}_n} & = \frac{\partial }{\partial \mathbf{a}_n}\EE\left[(X_{n+h} - a_0 - \mathbf{a}_n^\top \mathbf{x}_n)^2\right]                                                                         \\
+                                                    & =\EE\left[\frac{\partial }{\partial \mathbf{a}_n}\left(\mathbf{a}_n^\top\mathbf{x}_n \mathbf{x}_n^\top\mathbf{a}_n - 2X_{n+h}\mathbf{x}_n^\top \mathbf{a}_n + 2a_0\mathbf{x}_n^\top
+  \mathbf{a}_n + (\text{ terms without } \mathbf{a}_n)\right)\right]                                                                                                                                                                      \\
+                                                    & =2 \EE[\mathbf{x}_n \mathbf{x}_n^\top\mathbf{a}_n - X_{n+h}\mathbf{x}_n + a_0\mathbf{x}_n]                                                                                          \\
+                                                    & =2 \EE[\mathbf{x}_n \mathbf{x}_n^\top]\mathbf{a}_n - 2\EE[X_{n+h}\mathbf{x}_n] + 2\EE[a_0\mathbf{x}_n]                                                                              \\
+                                                    & =2 (\Gamma_n +\mu^2 \bOne\bOne^\top)\mathbf{a}_n - 2(\bm{\gamma}_n(h) + \mu^2 \bOne) + 2a_0\mu \bOne                                                                                \\
+  a_0 = \mu(1-\mathbf{a}_n^\top\bOne) \Longrightarrow
+                                                    & =2 (\Gamma_n +\mu^2 \bOne\bOne^\top)\mathbf{a}_n - 2(\bm{\gamma}_n(h) + \mu^2 \bOne) + 2 \mu(1-\mathbf{a}_n^\top\bOne)\mu \bOne                                                     \\
+                                                    & =2 \Gamma_n \mathbf{a}_n - 2\bm{\gamma}_n(h)                                                                                                                                        \\
+  \Longrightarrow \mathbf{a}_n^*                    &
+  = \Gamma_n^{-1}\bm{\gamma}_n(h)
+\end{align*}
+Therefore, the \textbf{Best Linear Predictor} is given by
+\begin{align}
+  P_n X_{n+h} : = a_0^* + \mathbf{a}_n^{*^\top} \mathbf{x}_n \text{ where }
+  \begin{cases}
+    a_0^*          & = \mu(1-\mathbf{a}_n^{*^\top}\bOne) \\
+    \mathbf{a}_n^* & = \Gamma_n^{-1}\bm{\gamma}_n(h)
+  \end{cases} \label{eq: Best Linear Predictor}
+\end{align}
+
+
 \begin{problem}
-    Evaluate $1+ 1$.
+Show that Mean Squared Predictive Error is obtained by
+$$
+  \EE\left[\left(X_{n+h}-P_{n} X_{n+h}\right)^{2}\right] = \gamma_{X}(0)- \mathbf{a}_n^{*^\top}\bm{\gamma}_n(h)
+$$
+\end{problem}
+\begin{solution}
+  From above, we get
+  \begin{align*}
+    \EE\left[\left(X_{n+h}-P_{n} X_{n+h}\right)^{2}\right]
+     & = \EE\left[\left(X_{n+h}-a_0^* -\mathbf{a}_n^{*^\top}\mathbf{x}_n\right)^{2}\right]                                                                                                                                                                                                                       \\
+    \mathbf{a}_n^{*^\top}\mathbf{x}_n = \mathbf{x}_n^\top \mathbf{a}_n^* \Longrightarrow
+     & = \EE\left[X_{n+h}^2 +a_0^{*^2} + \mathbf{a}_n^{*^\top}\mathbf{x}_n\mathbf{x}_n^\top\mathbf{a}_n^{*} - 2a_0^*X_{n+h} - 2X_{n+h}\mathbf{a}_n^{*^\top}\mathbf{x}_n + 2a_0^*\mathbf{a}_n^{*^\top}\mathbf{x}_n\right]                                                                                         \\
+     & = \EE\left[X_{n+h}^2\right] + a_0^{*^2} + \mathbf{a}_n^{*^\top}\EE[\mathbf{x}_n\mathbf{x}_n^\top]\mathbf{a}_n^{*} - 2a_0^*\EE[X_{n+h}] - 2\mathbf{a}_n^{*^\top}\EE[X_{n+h}\mathbf{x}_n] + 2a_0^*\mathbf{a}_n^{*^\top}\EE\left[\mathbf{x}_n\right]                                                         \\
+     & = \gamma_{X}(0) + \mu^2 + \mu^2(1-\mathbf{a}_n^{*^\top}\bOne)^2 + \mathbf{a}_n^{*^\top}(\Gamma_n +\mu^2 \bOne\bOne^\top)\mathbf{a}_n^{*} - 2\mu^2(1-\mathbf{a}_n^{*^\top}\bOne) - 2\mathbf{a}_n^{*^\top}(\bm{\gamma}_n(h) + \mu^2 \bOne) + 2\mu^2(1-\mathbf{a}_n^{*^\top}\bOne)\mathbf{a}_n^{*^\top}\bOne \\
+     & = \gamma_{X}(0) + \mathbf{a}_n^{*^\top}\Gamma_n\mathbf{a}_n^{*} - 2\mathbf{a}_n^{*^\top}\bm{\gamma}_n(h)                                                                                                                                                                                                  \\
+    \mathbf{a}_n^* = \Gamma_n^{-1}\bm{\gamma}_n(h) \Longrightarrow
+     & = \gamma_{X}(0) + \mathbf{a}_n^{*^\top}\Gamma_n\Gamma_n^{-1}\bm{\gamma}_n(h) - 2\mathbf{a}_n^{*^\top}\bm{\gamma}_n(h)                                                                                                                                                                                     \\
+     & = \gamma_{X}(0)- \mathbf{a}_n^{*^\top}\bm{\gamma}_n(h)
+  \end{align*}
+  Hence, we can conclude that the Mean Squared Predictive Error is obtained by
+  $$
+    \EE\left[\left(X_{n+h}-P_{n} X_{n+h}\right)^{2}\right] = \gamma_{X}(0)- \mathbf{a}_n^{*^\top}\bm{\gamma}_n(h)
+  $$
+\end{solution}
+
+\begin{remark}\hfill
+  \begin{enumerate}
+    \item For a linear Gaussian process $\left\{X_{t}\right\}$,
+          take $X_{n+h} \mid X_1, \ldots, X_n = P_{n} X_{n+h} + \epsilon = a_0^* + \mathbf{a}_n^{*^\top}\mathbf{x}_n + \epsilon$, then the residual term $\epsilon$ must be Gaussian.
+          Then, we have
+          $$
+            \EE[X_{n+h} \mid X_1, \ldots, X_n - P_{n} X_{n+h}] = \mu - a_0^* + \mu\mathbf{a}_n^{*^\top}\bOne = 0
+            \xrightarrow{a_0^*= \mu(1-\mathbf{a}_n^{*^\top}\bOne)}
+            \epsilon\sim \mathcal{N}(0, \operatorname{MSPE}(P_n X_{n+h})) = \mathcal{N}(0, \gamma_{X}(0)- \mathbf{a}_n^{*^\top}\bm{\gamma}_n(h))
+          $$
+          by our computation; thus, the predictive distribution is also Gaussian:
+          $$
+            X_{n+h} \mid X_1, \ldots, X_n \sim \mathcal{N}\left(P_n X_{n+h}, \operatorname{MSPE}\left(P_n X_{n+h}\right)\right) = \mathcal{N}\left(a_0^* + \mathbf{a}_n^{*^\top}\mathbf{x}_n, \gamma_{X}(0)- \mathbf{a}_n^{*^\top}\bm{\gamma}_n(h)\right)
+          $$
+          where $a_0^* = \mu(1-\mathbf{a}_n^{*^\top}\bOne)$ and $\mathbf{a}_n^* = \Gamma_n^{-1}\bm{\gamma}_n(h)$.
+    \item For large $n, \Gamma_n^{-1}$ is obtained through recursive algorithms. As an example look at Durbin-Levinson Algorithm
+  \end{enumerate}
+\end{remark}
+
+
+
+\section{Topic: MLE for AR and MA processes}
+\subsection*{Direct MLE}
+Suppose that $\left\{X_t\right\}$ is a Gaussian time series (process) with mean $\mu$ and autocovariance function $\gamma_X(i, j)$. 
+Let $\mathbf{x}_n=\left(X_1, \ldots, X_n\right)\in \mathbb{R}^n$.
+Let $\Gamma_n$ denote the covariance matrix $\Gamma_n=Cov\left(\mathbf{x}_n, \mathbf{x}_n\right)$, and assume that $\Gamma_n$ is nonsingular.
+Since any subset of a Gaussian process are jointly Gaussian, the likelihood function for given observation $\mathbf{x}_n$ (a single obseravtion) is
+$$
+L\left(\Psi\right)= f(\mathbf{x}_n \mid \Psi) = \frac{1}{\sqrt{(2 \pi)^n|\Gamma_n|}} \exp \left(-\frac{1}{2} (\mathbf{x}_n-\mu)^\top \Gamma_n^{-1} (\mathbf{x}_n-\mu)\right) .
+$$
+where $\Psi$ is the parameter set, e.g.for the ARMA model, $\Psi_{ARMA(p, q)}=\left(\phi_1, \ldots, \phi_{p}, \theta_1, \ldots, \theta_{q}, \sigma^2\right)$.
+
+To simplify our computation, we could consider the log-likelihood function:
+$$
+\log L(\Psi)= -\frac{n}{2} \log (2 \pi)+\frac{1}{2} \log \left|\Gamma_n\right|^{-1}-\frac{1}{2}(\mathbf{x}_n-\boldsymbol{\mu})^\top \Gamma_n^{-1}(\mathbf{x}_n-\boldsymbol{\mu})
+$$
+
+Then, the values of parameters $\Psi$ which maximizes the Log-likelihood function is the Maximum Likelihood Estimate of $\Psi$. That is, 
+$$
+\hat{\Psi}_{MLE}=\arg \max_{\Psi} \log L(\Psi)
+$$
+\subsection*{Conditional MLE}
+For the ease of implementation, we can also use the conditional MLE. Using the fact that 
+$$
+f(\mathbf{x}_n \mid \Psi) = f(x_1, \ldots, x_n \mid \Psi) 
+= f(x_n \mid x_1, \ldots, x_{n-1}, \Psi) f(x_1, \ldots, x_{n-1} \mid \Psi) 
+\xlongequal{\cdots} f(x_n \mid x_1, \ldots, x_{n-1}, \Psi)f(x_{n-1} \mid x_1, \ldots, x_{n-2}, \Psi) \cdots f(x_1 \mid \Psi)
+$$
+Then, the MLE is given by
+$$
+\log L(\Psi) = \log f(x_1 \mid \Psi) + \sum_{i=2}^{n} \log f(x_{i} \mid x_1, \ldots, x_{i-1}, \Psi)
+$$
+
+\subsection*{MLE for AR(p) Processes}
+
+
+
+\subsection*{MLE for MA(q) Processes}
+
+
+
+\begin{problem}
+Using a programming language of your choice, repeat the MLE construction and simulation for AR and MA models as discussed this in the class.
+\end{problem}
+
+\begin{solution}
+
+\end{solution}
+
+\section{Topic: MLE for AR and MA processes}
+\begin{problem}
+For the time series model below:
+$$
+  X_{t}=0.9 X_{t-1}+Z_{t} \quad Z_{t} \text{ is } N\left(0,0.7^{2}\right)
+$$
+
+\begin{enumerate}[label = (\Roman*)]
+  \item Simulate a path with 1000 data points.
+  \item Take the simulated path as the realized data and estimate the parameters using the MLE estimator.
+  \item Repeat steps (I) and (II) for 100 times and plot the distributions of the parameters you have estimated. What are the $95 \%$ confidence levels around your mean estimated parameters?
+  \item Repeat (III) but use 5000 times instead of 100 times.
+\end{enumerate}
+
+Use any programming language or algorithm you are comfortable with but we need to see the code.
+
 \end{problem}
 \begin{solution}
 
 \end{solution}
 
 
+\section{Application: Mean Squared Prediction and the Best Linear Predictor}
+\begin{problem}
+An MA(1) process is given by
+$$
+  X_{t}=Z_{t}+\theta Z_{t-1} \quad \theta=0.8, \quad Z_{t} \sim W N(0,1)
+$$
 
+Our observations indicates that $\left\{X_{1}=3.2020, X_{2}=1.5625\right\}$.
 
+What is the best linear prediction and MSPE for $X_{3}$?
+\end{problem}
 
+\begin{solution}
+  From \cref{eq: Best Linear Predictor}, we know that
+  $$
+    P_n X_{n+h} : = a_0^* + \mathbf{a}_n^{*^\top} \mathbf{x}_n \text{ where }
+    \begin{cases}
+      a_0^*          & = \mu(1-\mathbf{a}_n^{*^\top}\bOne) \\
+      \mathbf{a}_n^* & = \Gamma_n^{-1}\bm{\gamma}_n(h)
+    \end{cases}
+    \quad \xrightarrow{n=2, h=1} \quad
+    P_2 X_{3} : = a_0^* + \mathbf{a}_2^{*^\top} \mathbf{x}_2 \text{ where }
+    \begin{cases}
+      a_0^*          & = \mu(1-\mathbf{a}_2^{*^\top}\bOne) \\
+      \mathbf{a}_2^* & = \Gamma_2^{-1}\bm{\gamma}_2(1)
+    \end{cases}
+  $$
+  Since $\EE[X_t] = 0 = \mu$ and $\gamma_X(h) = (1+\theta^2)\gamma_Z(h) + \theta\gamma_Z(h-1) + \theta\gamma_Z(h+1) = \begin{cases}
+      (1+\theta^2)\sigma^2 & \text{ if } h = 0     \\
+      \theta\sigma^2       & \text{ if } h = \pm 1 \\
+      0                    & \text{ otherwise }
+    \end{cases}$, we have
+  $$
+    \Gamma_2 = \begin{bmatrix}
+      \gamma_X(0) & \gamma_X(1) \\
+      \gamma_X(1) & \gamma_X(0)
+    \end{bmatrix} = \begin{bmatrix}
+      (1+\theta^2)\sigma^2 & \theta\sigma^2       \\
+      \theta\sigma^2       & (1+\theta^2)\sigma^2
+    \end{bmatrix},
+    \bm{\gamma}_2(1) = \begin{bmatrix}
+      \gamma_X(1) \\
+      \gamma_X(2)
+    \end{bmatrix} = \begin{bmatrix}
+      \theta\sigma^2 \\
+      0
+    \end{bmatrix}
+    \Longrightarrow
+    \begin{cases}
+      a_0^*          & = 0                             \\
+      \mathbf{a}_2^* & = \Gamma_2^{-1}\bm{\gamma}_2(1)
+      = \frac{1}{1+\theta^2 + \theta^4}
+      \begin{bmatrix}
+        \theta + \theta^3 \\
+        -\theta^2
+      \end{bmatrix} \xlongequal{\theta = 0.8}
+      \begin{bmatrix}
+        \frac{820}{1281} \\
+        -\frac{400}{1281}
+      \end{bmatrix}
+    \end{cases}
+  $$
+  Therefore, the Best Linear Predictor for $X_3$ is
+  $$
+    \hat{X}_3 = P_n X_{n+h} : = a_0^* + \mathbf{a}_n^{*^\top} \mathbf{x}_n = \frac{820}{1281}X_2 -\frac{400}{1281}X_1 = 1.5618
+  $$
 
+  The corresponding MSPE is
+  $$
+    MSPE = \EE\left[\left(X_{n+h}-P_{n} X_{n+h}\right)^{2}\right] = \gamma_{X}(0)- \mathbf{a}_n^{*^\top}\bm{\gamma}_n(h)
+    \xrightarrow{n=2, h=1} =\gamma_{X}(0)- \mathbf{a}_2^{*^\top}\bm{\gamma}_2(1) = 1.64 - \begin{bmatrix}
+      \frac{820}{1281} & -\frac{400}{1281}
+    \end{bmatrix}\begin{bmatrix}
+      0.8 \\
+      0
+    \end{bmatrix} = \frac{656}{1281}
+  $$
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  Hence, the Best Linear Predictor for $X_3$ is $\hat{X}_3= 1.5618$ and the corresponding $MSPE = \frac{656}{1281}$.
+\end{solution}
 
 
 \end{document}

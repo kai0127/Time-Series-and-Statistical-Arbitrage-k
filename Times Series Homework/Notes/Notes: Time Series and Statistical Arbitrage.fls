@@ -1,7 +1,7 @@
-PWD /Users/linda/Desktop/LaTeX/Times Series Homework/Homework2
+PWD /Users/linda/Desktop/LaTeX/Times Series Homework/Notes
 INPUT /usr/local/texlive/2023/texmf-var/web2c/luahbtex/lualatex.fmt
-INPUT /Users/linda/Desktop/LaTeX/Times Series Homework/Homework2/TSSA_hw2.tex
-OUTPUT TSSA_hw2.log
+INPUT /Users/linda/Desktop/LaTeX/Times Series Homework/Notes/Notes: Time Series and Statistical Arbitrage.tex
+OUTPUT Notes: Time Series and Statistical Arbitrage.log
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/lualatexquotejobname.lua
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/ltluatex.lua
 INPUT /usr/local/texlive/2023/texmf-dist/tex/luatex/luaotfload/luaotfload-main.lua
@@ -504,9 +504,9 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/doublestroke/dsfont.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-INPUT ./TSSA_hw2.aux
-INPUT ./TSSA_hw2.aux
-OUTPUT TSSA_hw2.aux
+INPUT ./Notes: Time Series and Statistical Arbitrage.aux
+INPUT ./Notes: Time Series and Statistical Arbitrage.aux
+OUTPUT Notes: Time Series and Statistical Arbitrage.aux
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
 INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -525,16 +525,15 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadat
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
-INPUT ./TSSA_hw2.out
-INPUT ./TSSA_hw2.out
-INPUT ./TSSA_hw2.out
-INPUT ./TSSA_hw2.out
-OUTPUT TSSA_hw2.pdf
-INPUT ./TSSA_hw2.out
-OUTPUT TSSA_hw2.out
-INPUT ./TSSA_hw2.toc
-INPUT ./TSSA_hw2.toc
-OUTPUT TSSA_hw2.toc
+INPUT ./Notes: Time Series and Statistical Arbitrage.out
+INPUT ./Notes: Time Series and Statistical Arbitrage.out
+INPUT ./Notes: Time Series and Statistical Arbitrage.out
+INPUT ./Notes: Time Series and Statistical Arbitrage.out
+OUTPUT Notes: Time Series and Statistical Arbitrage.pdf
+OUTPUT Notes: Time Series and Statistical Arbitrage.out
+INPUT ./Notes: Time Series and Statistical Arbitrage.toc
+INPUT ./Notes: Time Series and Statistical Arbitrage.toc
+OUTPUT Notes: Time Series and Statistical Arbitrage.toc
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
@@ -566,27 +565,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/doublestroke/dsrom10.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/doublestroke/dsrom8.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/doublestroke/dsrom8.tfm
 INPUT /usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT ./TSSA_hw2.aux
-INPUT ./TSSA_hw2.out
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb
+INPUT ./Notes: Time Series and Statistical Arbitrage.aux
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb

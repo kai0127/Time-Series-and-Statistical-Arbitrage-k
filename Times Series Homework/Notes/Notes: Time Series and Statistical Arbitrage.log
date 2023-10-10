@@ -1,8 +1,8 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.9.15)  9 OCT 2023 01:32
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.9.15)  7 OCT 2023 14:51
  restricted system commands enabled.
  file:line:error style messages enabled.
-**"/Users/linda/Desktop/LaTeX/Times Series Homework/Homework2/TSSA_hw2.tex"
-("/Users/linda/Desktop/LaTeX/Times Series Homework/Homework2/TSSA_hw2.tex"
+**"/Users/linda/Desktop/LaTeX/Times Series Homework/Notes/Notes: Time Series and Statistical Arbitrage.tex"
+("/Users/linda/Desktop/LaTeX/Times Series Homework/Notes/Notes: Time Series and Statistical Arbitrage.tex"
 LaTeX2e <2022-11-01> patch level 1
 Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
 Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
@@ -1040,8 +1040,8 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@erf=\skip68
 \f@nch@O@olf=\skip69
 \f@nch@O@orf=\skip70
-) (./TSSA_hw2.aux)
-\openout1 = TSSA_hw2.aux
+) ("./Notes: Time Series and Statistical Arbitrage.aux")
+\openout1 = Notes: Time Series and Statistical Arbitrage.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 235.
 LaTeX Font Info:    ... okay on input line 235.
@@ -1103,10 +1103,10 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 Package hyperref Info: Link coloring ON on input line 235.
- (./TSSA_hw2.out) (./TSSA_hw2.out)
+ ("./Notes: Time Series and Statistical Arbitrage.out") ("./Notes: Time Series and Statistical Arbitrage.out")
 \@outlinefile=\write5
 
-\openout5 = TSSA_hw2.out
+\openout5 = Notes: Time Series and Statistical Arbitrage.out
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -1154,7 +1154,7 @@ LaTeX Font Info:    Font shape `JT3/BabelStoneHan(0)/b/n' will be
 (Font)              scaled to size 11.23196pt on input line 245.
 LaTeX Font Info:    Font shape `JY3/BabelStoneHan(0)/b/n' will be
 (Font)              scaled to size 11.23196pt on input line 245.
-(./TSSA_hw2.toc
+("./Notes: Time Series and Statistical Arbitrage.toc"
 LaTeX Font Info:    Font shape `JT3/BabelStoneHan(0)/b/n' will be
 (Font)              scaled to size 8.54097pt on input line 1.
 LaTeX Font Info:    Font shape `JY3/BabelStoneHan(0)/b/n' will be
@@ -1162,7 +1162,9 @@ LaTeX Font Info:    Font shape `JY3/BabelStoneHan(0)/b/n' will be
 )
 \tf@toc=\write6
 
-\openout6 = TSSA_hw2.toc
+\openout6 = Notes: Time Series and Statistical Arbitrage.toc
+LaTeX Font Info:    Kanji font shape `JY3/BabelStoneHan(0)/m/it' undefined
+(Font)              No change on input line 248.
 LaTeX Font Info:    Trying loading font information for U+msa on input line 249.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1179,57 +1181,31 @@ LaTeX Font Info:    Font shape `JY3/BabelStoneHan(0)/b/n' will be
 (Font)              scaled to size 6.23999pt on input line 249.
 LaTeX Font Info:    Font shape `JY3/BabelStoneHan(0)/b/n' will be
 (Font)              scaled to size 4.68pt on input line 249.
-LaTeX Font Info:    Trying loading font information for U+dsrom on input line 258.
- (/usr/local/texlive/2023/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
-LaTeX Font Info:    Font shape `JT3/BabelStoneHan(0)/m/n' will be
-(Font)              scaled to size 6.23999pt on input line 290.
-LaTeX Font Info:    Font shape `JT3/BabelStoneHan(0)/m/n' will be
-(Font)              scaled to size 4.68pt on input line 290.
-LaTeX Font Info:    Kanji font shape `JY3/BabelStoneHan(0)/m/it' undefined
-(Font)              No change on input line 301.
 LaTeX Font Info:    Font shape `JT3/BabelStoneHan(0)/b/n' will be
-(Font)              scaled to size 7.79999pt on input line 329.
+(Font)              scaled to size 7.79999pt on input line 289.
 LaTeX Font Info:    Font shape `JY3/BabelStoneHan(0)/b/n' will be
-(Font)              scaled to size 7.79999pt on input line 329.
+(Font)              scaled to size 7.79999pt on input line 289.
  [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-]
-LaTeX Font Info:    Font shape `JT3/BabelStoneHan(0)/m/n' will be
-(Font)              scaled to size 9.35999pt on input line 349.
-LaTeX Font Info:    Font shape `JY3/BabelStoneHan(0)/m/n' will be
-(Font)              scaled to size 9.35999pt on input line 349.
-LaTeX Font Info:    Font shape `JT3/BabelStoneHan(0)/b/n' will be
-(Font)              scaled to size 9.35999pt on input line 349.
-LaTeX Font Info:    Font shape `JY3/BabelStoneHan(0)/b/n' will be
-(Font)              scaled to size 9.35999pt on input line 349.
-LaTeX Font Info:    Kanji font shape `JY3/BabelStoneHan(0)/m/it' undefined
-(Font)              No change on input line 388.
-LaTeX Font Info:    Kanji font shape `JY3/BabelStoneHan(0)/m/it' undefined
-(Font)              No change on input line 397.
- [2]
-LaTeX Font Info:    Kanji font shape `JY3/BabelStoneHan(0)/m/it' undefined
-(Font)              No change on input line 419.
- [3] (./TSSA_hw2.aux)
-Package rerunfilecheck Info: File `TSSA_hw2.out' has not changed.
-(rerunfilecheck)             Checksum: C01479612A42CABBE011A6706897D782;1061.
+] ("./Notes: Time Series and Statistical Arbitrage.aux")
+Package rerunfilecheck Info: File `"Notes: Time Series and Statistical Arbitrage".out' has not changed.
+(rerunfilecheck)             Checksum: <no file>.
 )
 
 Here is how much of LuaTeX's memory you used:
- 32834 strings out of 478285
- 195709,1977958 words of node,token memory allocated
- 1547 words of node memory still in use:
-   11 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 411 attribute, 60 glue_spec, 49 attribute_list, 2 write, 13 user_defined nodes
-   avail lists: 1:18,2:34068,3:362,4:913,5:1020,6:77,7:9403,8:111,9:2926,10:4,11:310
- 51655 multiletter control sequences out of 65536+600000
- 86 fonts using 190431575 bytes
- 106i,15n,115p,1843b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/linda/Library/Fonts/Vollkorn-Italic.otf></Users/linda/Library/Fonts/Vollkorn-Regular.otf></Users/linda/Library/Fonts/Vollkorn-Bold.otf></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TSSA_hw2.pdf (3 pages, 180132 bytes).
+ 32772 strings out of 478285
+ 125244,1977958 words of node,token memory allocated
+ 1019 words of node memory still in use:
+   10 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 178 attribute, 59 glue_spec, 27 attribute_list, 2 write, 12 user_defined nodes
+   avail lists: 1:13,2:5279,3:153,4:269,5:234,6:40,7:867,8:3,9:300,10:1,11:51
+ 51622 multiletter control sequences out of 65536+600000
+ 75 fonts using 167146967 bytes
+ 106i,12n,115p,1875b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/linda/Library/Fonts/Vollkorn-Italic.otf></Users/linda/Library/Fonts/Vollkorn-Regular.otf></Users/linda/Library/Fonts/Vollkorn-Bold.otf></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on Notes: Time Series and Statistical Arbitrage.pdf (1 page, 25813 bytes).
 
-PDF statistics: 151 PDF objects out of 1000 (max. 8388607)
- 119 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 131072)
- 48 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 50 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
+ 5 named destinations out of 1000 (max. 131072)
+ 24 words of extra memory for PDF output out of 10000 (max. 100000000)
 
