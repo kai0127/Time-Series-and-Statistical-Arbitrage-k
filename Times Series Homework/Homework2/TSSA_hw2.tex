@@ -251,7 +251,7 @@ Our goal is to predict: $X_{n+h}$ using observations $X_1, X_2, \ldots, X_n$.
 
 We define the \textbf{Best Linear Predictor} to be the one minimizes the Mean Squared Prediction Error (MSPE):
 $$
-  \widehat{X}_{n+h}=E\left[X_{n+h} \mid X_1, \cdots, X_n\right] = P_n X_{n+h} : =a_0^*+a_1^* X_n+ \cdots +a_n^* X_1 = a_0 + \mathbf{a}_n^\top \mathbf{x}_n = \arg\min_{a_0, \mathbf{a}_n} \EE\left[\left(X_{n+h}-a_0 - \mathbf{a}_n^\top \mathbf{x}_n\right)^2\right] = \arg\min_{a_0, \mathbf{a}_n} L(a_0, \mathbf{a}_n)
+  \widehat{X}_{n+h}=E\left[X_{n+h} \mid X_1, \ldots, X_n\right] = P_n X_{n+h} : =a_0^*+a_1^* X_n+ \cdots +a_n^* X_1 = a_0 + \mathbf{a}_n^\top \mathbf{x}_n = \arg\min_{a_0, \mathbf{a}_n} \EE\left[\left(X_{n+h}-a_0 - \mathbf{a}_n^\top \mathbf{x}_n\right)^2\right] = \arg\min_{a_0, \mathbf{a}_n} L(a_0, \mathbf{a}_n)
 $$
 where $\mathbf{a}_n = (a_1, \ldots, a_n) \in\mathbb{R}^n$, $\mathbf{x}_n = (x_n, \ldots, x_1)\in\mathbb{R}^n$, $P$ in $P_n$ stands for ``Predictor'' and $n$ suggests that we are using $n$ most recent observations.
 
