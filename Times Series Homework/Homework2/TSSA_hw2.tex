@@ -347,49 +347,132 @@ $$
 
 \section{Topic: MLE for AR and MA processes}
 \subsection*{Direct MLE}
-Suppose that $\left\{X_t\right\}$ is a Gaussian time series (process) with mean $\mu$ and autocovariance function $\gamma_X(i, j)$. 
+Suppose that $\left\{X_t\right\}$ is a Gaussian time series (process) with mean $\mu$ and autocovariance function $\gamma_X(i, j)$.
 Let $\mathbf{x}_n=\left(X_1, \ldots, X_n\right)\in \mathbb{R}^n$.
 Let $\Gamma_n$ denote the covariance matrix $\Gamma_n=Cov\left(\mathbf{x}_n, \mathbf{x}_n\right)$, and assume that $\Gamma_n$ is nonsingular.
 Since any subset of a Gaussian process are jointly Gaussian, the likelihood function for given observation $\mathbf{x}_n$ (a single obseravtion) is
 $$
-L\left(\Psi\right)= f(\mathbf{x}_n \mid \Psi) = \frac{1}{\sqrt{(2 \pi)^n|\Gamma_n|}} \exp \left(-\frac{1}{2} (\mathbf{x}_n-\mu)^\top \Gamma_n^{-1} (\mathbf{x}_n-\mu)\right) .
+  L\left(\Psi\right)= f(\mathbf{x}_n \mid \Psi) = \frac{1}{\sqrt{(2 \pi)^n|\Gamma_n|}} \exp \left(-\frac{1}{2} (\mathbf{x}_n-\mu)^\top \Gamma_n^{-1} (\mathbf{x}_n-\mu)\right) .
 $$
 where $\Psi$ is the parameter set, e.g.for the ARMA model, $\Psi_{ARMA(p, q)}=\left(\phi_1, \ldots, \phi_{p}, \theta_1, \ldots, \theta_{q}, \sigma^2\right)$.
 
 To simplify our computation, we could consider the log-likelihood function:
 $$
-\log L(\Psi)= -\frac{n}{2} \log (2 \pi)+\frac{1}{2} \log \left|\Gamma_n\right|^{-1}-\frac{1}{2}(\mathbf{x}_n-\boldsymbol{\mu})^\top \Gamma_n^{-1}(\mathbf{x}_n-\boldsymbol{\mu})
+  \log L(\Psi)= -\frac{n}{2} \log (2 \pi)+\frac{1}{2} \log \left|\Gamma_n\right|^{-1}-\frac{1}{2}(\mathbf{x}_n-\boldsymbol{\mu})^\top \Gamma_n^{-1}(\mathbf{x}_n-\boldsymbol{\mu})
 $$
 
-Then, the values of parameters $\Psi$ which maximizes the Log-likelihood function is the Maximum Likelihood Estimate of $\Psi$. That is, 
+Then, the values of parameters $\Psi$ which maximizes the Log-likelihood function is the Maximum Likelihood Estimate of $\Psi$. That is,
 $$
-\hat{\Psi}_{MLE}=\arg \max_{\Psi} \log L(\Psi)
+  \hat{\Psi}_{MLE}=\arg \max_{\Psi} \log L(\Psi)
 $$
 \subsection*{Conditional MLE}
-For the ease of implementation, we can also use the conditional MLE. Using the fact that 
+For the ease of implementation, we can also use the conditional MLE. Using the fact that
 $$
-f(\mathbf{x}_n \mid \Psi) = f(x_1, \ldots, x_n \mid \Psi) 
-= f(x_n \mid x_1, \ldots, x_{n-1}, \Psi) f(x_1, \ldots, x_{n-1} \mid \Psi) 
-\xlongequal{\cdots} f(x_n \mid x_1, \ldots, x_{n-1}, \Psi)f(x_{n-1} \mid x_1, \ldots, x_{n-2}, \Psi) \cdots f(x_1 \mid \Psi)
+  f(\mathbf{x}_n \mid \Psi) = f(x_1, \ldots, x_n \mid \Psi)
+  = f(x_n \mid x_1, \ldots, x_{n-1}, \Psi) f(x_1, \ldots, x_{n-1} \mid \Psi)
+  \xlongequal{\cdots} f(x_n \mid x_1, \ldots, x_{n-1}, \Psi)f(x_{n-1} \mid x_1, \ldots, x_{n-2}, \Psi) \cdots f(x_1 \mid \Psi)
 $$
 Then, the MLE is given by
+\begin{align}
+  \log L(\Psi) = \log f(x_1 \mid \Psi) + \sum_{i=2}^{n} \log f(x_{i} \mid x_1, \ldots, x_{i-1}, \Psi) \label{eq:conditional MLE}
+\end{align}
+Similarly, the values of parameters $\Psi$ which maximizes the Log-likelihood function is the Maximum Likelihood Estimate of $\Psi$. That is,
 $$
-\log L(\Psi) = \log f(x_1 \mid \Psi) + \sum_{i=2}^{n} \log f(x_{i} \mid x_1, \ldots, x_{i-1}, \Psi)
+  \hat{\Psi}_{MLE}=\arg \max_{\Psi} \log L(\Psi)
 $$
 
-\subsection*{MLE for AR(p) Processes}
+\begin{remark}\hfill
+  \begin{enumerate}
+    \item We mostly use Conditional MLE in applications.
+    \item Since $X_1$ is the the first data point, the way it's picked is on its own. If $X_1$ is pick based on some distribution, we can surely keep the term $\log f(x_1\mid \Psi)$ in the above equation
+          and work with the exact MLE. If how $X_1$ is picked is unknown, we can treat it as deterministic, and drop the term $\log f(x_1\mid \Psi)$ in the above equation.
+  \end{enumerate}
 
-
-
-\subsection*{MLE for MA(q) Processes}
-
-
+\end{remark}
 
 \begin{problem}
 Using a programming language of your choice, repeat the MLE construction and simulation for AR and MA models as discussed this in the class.
 \end{problem}
 
 \begin{solution}
+  \begin{enumerate}[label = (\alph*)]
+    \item \textbf{Conditional MLE for AR(1) Process}
+
+          Consider observations $\left\{X_1, X_2, \ldots, X_n\right\}$ of a stationary Gaussian
+          AR(1) process. For parameter vector is $\Psi=\left(\phi_0, \phi, \sigma^2\right)$, we have
+          $$
+            X_t=\phi_0+\phi X_{t-1}+Z_t,  Z_t \sim IIDN\left(0, \sigma^2\right), \quad
+            \EE[X_t]=\frac{\phi_0}{1-\phi}, Var\left(X_t\right)=\frac{\sigma^2}{1-\phi^2} \text{ and } \gamma_X(h)=\frac{\phi^h \sigma^2}{1-\phi^2}
+          $$
+          The probability distribution for $X_1$ can be written as,
+          $$
+            X_1 \sim \mathcal{N}\left(\frac{\phi_0}{1-\phi}, \frac{\sigma^2}{1-\phi^2}\right)  \Longrightarrow f\left(x_1 ; \Psi\right)=\frac{1}{\sqrt{2 \pi \frac{\sigma^2}{1-\phi^2}}} \exp \left\{\frac{-\left(x_1-\frac{\phi_0}{1-\phi}\right)^2}{2 \frac{\sigma^2}{1-\phi^2}}\right\}
+          $$
+          Since $X_2=\phi_0+\phi X_1+Z_2$, $X_2 \mid X_1=x_1 \sim \mathcal{N}\left(\phi_0+\phi x_1, \sigma^2\right)$.
+          The conditional probability distribution for $X_2$ knowing $X_1$ can be written as,
+          $$f\left(x_2 \mid x_1 ; \Psi\right)=\frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left\{\frac{-\left(x_2-\phi_0-\phi x_1\right)^2}{2 \sigma^2}\right\}
+          $$
+          Similarly, we have $X_n \mid X_{n-1}=x_{n-1} \sim \mathcal{N}\left(\phi_0+\phi x_{n-1}, \sigma^2\right)$ and
+          $$
+            f\left(x_n \mid x_{n-1} ; \Psi\right)=\frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left\{\frac{-\left(x_n-\phi_0-\phi x_{n-1}\right)^2}{2 \sigma^2}\right\}
+          $$
+          Plug these in \cref{eq:conditional MLE}, we obtain the Log-Likelihood function:
+          \begin{align*}
+            \log L(\Psi) & = \log f(x_1 \mid \Psi) + \sum_{i=2}^{n} \log f(x_{i} \mid x_1, \ldots, x_{i-1}, \Psi)                                                                                                                                                                                                                       \\
+                         & = -\frac{1}{2} \log (2 \pi)-\frac{1}{2} \log \left(\frac{\sigma^2}{1-\phi^2}\right)-\frac{\left(x_1-\frac{\phi_0}{1-\phi}\right)^2}{2 \frac{\sigma^2}{1-\phi^2}} + \sum_{i=2}^n - \frac{1}{2} \log (2 \pi)-\frac{1}{2} \log \left(\sigma^2\right)- \frac{\left(x_i-\phi_0-\phi x_{i-1}\right)^2}{2 \sigma^2} \\
+                         & = -\frac{1}{2} \log (2 \pi)-\frac{1}{2} \log \left(\frac{\sigma^2}{1-\phi^2}\right)-\frac{\left(x_1-\frac{\phi_0}{1-\phi}\right)^2}{2 \frac{\sigma^2}{1-\phi^2}}-\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_i-\phi_0-\phi x_{i-1}\right)^2}{2 \sigma^2}
+          \end{align*}
+
+          Maximize this function to estimate the parameters. (Much easier to implement)\\
+
+          \hrule
+
+          \textbf{Example:} Suppose we have AR(1) process $X_t=0.9X_{t-1}+Z_t, Z_t \sim IIDN\left(0,0.7^2\right)$. We simulate this process and pretend that we do not know the true values for $\phi$ and $\sigma$.
+          Then, we use the conditional MLE to estimate the parameter vector $\Psi=\left(\phi, \sigma^2\right)$
+          By the above deduction, we get the log likelihood function is
+          \begin{align*}
+            \log L(\Psi)                                 & =-\frac{1}{2} \log (2 \pi)-\frac{1}{2} \log \left(\frac{\sigma^2}{1-\phi^2}\right)-\frac{x_1^2}{2 \frac{\sigma^2}{1-\phi^2}}-\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_i-\phi x_{i-1}\right)^2}{2 \sigma^2} \\
+            \text{ treat } X_1 \text{ as deterministic } & = -\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_i-\phi x_{i-1}\right)^2}{2 \sigma^2}
+          \end{align*}
+          Then, we have
+          $$
+            \hat{\Psi}_{MLE}=\arg \max_{\Psi} \log L(\Psi)
+          $$
+          For the coding work on this problem, check the attached jupyter notebook \texttt{Time Series and Statistical Arbitrage HW2.ipynb}
+    \item \textbf{Conditional MLE for MA(1) Process}
+
+          Consider observations $\left\{X_1, X_2, \ldots, X_n\right\}$ of a Gaussian
+          MA(1) process. For parameter vector is $\Psi=\left(\theta_0, \theta_1, \sigma^2\right)$, we have
+          $$
+            X_t=\theta_0+\theta_1 Z_{t-1}+Z_t, \quad Z_t \sim IIDN\left(0, \sigma^2\right)
+          $$
+          The probability distribution for $X_t$ can be written as,
+          $$
+            X_t \mid Z_{t-1} \sim \mathcal{N}\left(\theta_0+\theta_1 z_{t-1}, \sigma^2\right) \Longrightarrow  f\left(x_t \mid z_{t-1}\right)=\frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left\{\frac{-\left(x_t-\left(\theta_0+\theta_1 z_{t-1}\right)\right)^2}{2 \sigma^2}\right\}
+          $$
+          Plug these in \cref{eq:conditional MLE}, we obtain the Log-Likelihood function:
+          \begin{align*}
+            \log L(\Psi)                                 & = \log f(x_1 \mid \Psi) + \sum_{i=2}^{n} \log f(x_{i} \mid x_1, \ldots, x_{i-1}, \Psi)                                                              \\
+            \text{ treat } X_1 \text{ as deterministic } & = -\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_t-\theta_0-\theta_1 z_{t-1}\right)^2}{2 \sigma^2}
+          \end{align*}
+
+          Maximize this function to estimate the parameters. (Much easier to implement)\\
+
+          \hrule
+
+          \textbf{Example:} Suppose we have MA(1) process $X_t=0.5Z_{t-1}+Z_t, Z_t \sim IIDN\left(0,0.5^2\right)$. We simulate this process and pretend that we do not know the true values for $\phi$ and $\sigma$.
+          Then, we use the conditional MLE to estimate the parameter vector $\Psi=\left(\theta_1, \sigma^2\right)$
+          By the above deduction, we get the log likelihood function is
+          $$
+            \log L(\Psi)=-\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_t-\theta_1 z_{t-1}\right)^2}{2 \sigma^2}
+          $$
+          Then, we have
+          $$
+            \hat{\Psi}_{MLE}=\arg \max_{\Psi} \log L(\Psi)
+          $$
+          For the coding work on this problem, check the attached jupyter notebook \texttt{Time Series and Statistical Arbitrage HW2.ipynb}
+  \end{enumerate}
+
 
 \end{solution}
 
@@ -411,7 +494,7 @@ Use any programming language or algorithm you are comfortable with but we need t
 
 \end{problem}
 \begin{solution}
-
+  Please check the attached jupyter notebook \texttt{Time Series and Statistical Arbitrage HW2.ipynb}
 \end{solution}
 
 
