@@ -1,6 +1,6 @@
 # Fdb version 4
-["lualatex"] 1697481569 "/Users/linda/Desktop/LaTeX/Times Series Homework/Homework2/TSSA_hw2.tex" "TSSA_hw2.pdf" "TSSA_hw2" 1697481576 0
-  "/Users/linda/Desktop/LaTeX/Times Series Homework/Homework2/TSSA_hw2.tex" 1697481569 27702 94ec5a703add0517c9c8f69150dcc1ea ""
+["lualatex"] 1697504507 "/Users/linda/Desktop/LaTeX/Times Series Homework/Homework2/TSSA_hw2.tex" "TSSA_hw2.pdf" "TSSA_hw2" 1697504512 0
+  "/Users/linda/Desktop/LaTeX/Times Series Homework/Homework2/TSSA_hw2.tex" 1697504507 27736 783551dcabfe3efce7e527909cc8b8b2 ""
   "/Users/linda/Library/Fonts/Vollkorn-Bold.otf" 1525855805 504600 83467cfa4400474b6d068d7d268da90e ""
   "/Users/linda/Library/Fonts/Vollkorn-Italic.otf" 1525854575 411584 7b726e6369ee5630e2928aa5b34d2154 ""
   "/Users/linda/Library/Fonts/Vollkorn-Regular.otf" 1525855801 485528 2a74db36878fd191bb3c2f4c6575a19f ""
@@ -14,7 +14,7 @@
   "/Users/linda/Library/texlive/2023/texmf-var/luatex-cache/generic/fonts/otl/vollkorn-bolditalic.luc" 1696149711 663190 b66ca3d1e185396479b45a41e5249300 ""
   "/Users/linda/Library/texlive/2023/texmf-var/luatex-cache/generic/fonts/otl/vollkorn-italic.luc" 1696149711 531537 6ba2912c381ac826b2bb56e86971eb6d ""
   "/Users/linda/Library/texlive/2023/texmf-var/luatex-cache/generic/fonts/otl/vollkorn-regular.luc" 1696149708 659234 daaa00f77c1f75da2f00f807a7763652 ""
-  "/Users/linda/Library/texlive/2023/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1697460110 5459 c9d6aacde983361a60d32e66c48efb38 ""
+  "/Users/linda/Library/texlive/2023/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1697504240 5459 c9d6aacde983361a60d32e66c48efb38 ""
   "/Users/linda/Library/texlive/2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1696942012 370726 2d664aaa1aa6ab8002b2b9ce556a7a6b ""
   "/Users/linda/Library/texlive/2023/texmf-var/luatexja/extra_babelstonehan.luc" 1696045430 1667274 857e1839817ad440d2ac976e3c10929c ""
   "/Users/linda/Library/texlive/2023/texmf-var/luatexja/extra_haranoajimincho-regular.luc" 1696041368 316486 3b099056621ba8e72fc0c7fca02f108c ""
@@ -327,10 +327,10 @@
   "/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/patches/lltjp-listings.sty" 1653941231 14914 340890023fe5b05f4034feae149cab10 ""
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1696053482 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/luahbtex/lualatex.fmt" 1694803921 11876210 49080bdcf9fb115e6dd63b7a21cafe03 ""
-  "TSSA_hw2.aux" 1697481575 1409 f9cb614ee84432f40cb9f270a04cb8b6 "lualatex"
-  "TSSA_hw2.out" 1697481575 1061 c01479612a42cabbe011a6706897d782 "lualatex"
-  "TSSA_hw2.tex" 1697481569 27702 94ec5a703add0517c9c8f69150dcc1ea ""
-  "TSSA_hw2.toc" 1697481575 388 60e37fefb099ced84cc558fff2a5a24d "lualatex"
+  "TSSA_hw2.aux" 1697504512 1409 f9cb614ee84432f40cb9f270a04cb8b6 "lualatex"
+  "TSSA_hw2.out" 1697504512 1061 c01479612a42cabbe011a6706897d782 "lualatex"
+  "TSSA_hw2.tex" 1697504507 27736 783551dcabfe3efce7e527909cc8b8b2 ""
+  "TSSA_hw2.toc" 1697504512 388 60e37fefb099ced84cc558fff2a5a24d "lualatex"
   (generated)
   "TSSA_hw2.aux"
   "TSSA_hw2.log"
