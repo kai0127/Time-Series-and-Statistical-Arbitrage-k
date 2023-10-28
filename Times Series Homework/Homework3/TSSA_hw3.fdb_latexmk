@@ -1,6 +1,6 @@
 # Fdb version 4
-["lualatex"] 1698508791 "/Users/linda/Desktop/LaTeX/Homework Template/Homework Template.tex" "Homework Template.pdf" "Homework Template" 1698508796 0
-  "/Users/linda/Desktop/LaTeX/Homework Template/Homework Template.tex" 1698508791 8398 6c37fa50365c756d43708d5910a76b02 ""
+["lualatex"] 1698508837 "/Users/linda/Desktop/LaTeX/Times Series Homework/Homework3/TSSA_hw3.tex" "TSSA_hw3.pdf" "TSSA_hw3" 1698508841 0
+  "/Users/linda/Desktop/LaTeX/Times Series Homework/Homework3/TSSA_hw3.tex" 1698508805 8398 6c37fa50365c756d43708d5910a76b02 ""
   "/Users/linda/Library/Fonts/Vollkorn-Bold.otf" 1525855805 504600 83467cfa4400474b6d068d7d268da90e ""
   "/Users/linda/Library/Fonts/Vollkorn-Italic.otf" 1525854575 411584 7b726e6369ee5630e2928aa5b34d2154 ""
   "/Users/linda/Library/Fonts/Vollkorn-Regular.otf" 1525855801 485528 2a74db36878fd191bb3c2f4c6575a19f ""
@@ -311,14 +311,14 @@
   "/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/patches/lltjp-listings.sty" 1653941231 14914 340890023fe5b05f4034feae149cab10 ""
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1696053482 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/luahbtex/lualatex.fmt" 1694803921 11876210 49080bdcf9fb115e6dd63b7a21cafe03 ""
-  "Homework Template.aux" 1698508795 662 6a700d7ccfb8fc4c43556f4cef5641c2 "lualatex"
-  "Homework Template.out" 1698508795 101 0043c2a6a1f79a25b1083f0a33689746 "lualatex"
-  "Homework Template.tex" 1698508791 8398 6c37fa50365c756d43708d5910a76b02 ""
-  "Homework Template.toc" 1698508795 67 56ab5bb8af95cd0a857545005bd97735 "lualatex"
+  "TSSA_hw3.aux" 1698508841 662 6a700d7ccfb8fc4c43556f4cef5641c2 "lualatex"
+  "TSSA_hw3.out" 1698508841 101 0043c2a6a1f79a25b1083f0a33689746 "lualatex"
+  "TSSA_hw3.tex" 1698508805 8398 6c37fa50365c756d43708d5910a76b02 ""
+  "TSSA_hw3.toc" 1698508841 67 56ab5bb8af95cd0a857545005bd97735 "lualatex"
   (generated)
-  "Homework Template.aux"
-  "Homework Template.log"
-  "Homework Template.out"
-  "Homework Template.pdf"
-  "Homework Template.toc"
+  "TSSA_hw3.aux"
+  "TSSA_hw3.log"
+  "TSSA_hw3.out"
+  "TSSA_hw3.pdf"
+  "TSSA_hw3.toc"
   (rewritten before read)
