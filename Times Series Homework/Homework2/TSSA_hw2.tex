@@ -271,7 +271,7 @@ Taking the partial derivatives of $L$, we obtain
 $$
   0 = \frac{\partial L}{\partial a_0}
   = \EE\left[\frac{\partial }{\partial a_0}(X_{n+h}-a_0-\mathbf{a}_n^\top \mathbf{x}_n)^2\right]
-  = \EE\left[-2(X_{n+h}-a_0-\mathbf{a}_n^\top \mathbf{x}_n)\right] = 2(a_0-\mu-\mathbf{a}_n^\top\bOne)
+  = \EE\left[-2(X_{n+h}-a_0-\mathbf{a}_n^\top \mathbf{x}_n)\right] = 2(a_0-\mu+\mathbf{a}_n^\top\bOne)
   \Longrightarrow a_0^* = \mu(1-\mathbf{a}_n^\top\bOne)
 $$
 and
@@ -453,7 +453,7 @@ Using a programming language of your choice, repeat the MLE construction and sim
           Plug these in \cref{eq:conditional MLE}, we obtain the Log-Likelihood function:
           \begin{align*}
             \log L(\Psi)                                 & = \log f(x_1 \mid \Psi) + \sum_{i=2}^{n} \log f(x_{i} \mid x_1, \ldots, x_{i-1}, \Psi)                                                              \\
-            \text{ treat } X_1 \text{ as deterministic } & = -\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_t-\theta_0-\theta_1 z_{t-1}\right)^2}{2 \sigma^2}
+            \text{ treat } X_1 \text{ as deterministic } & = -\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_i-\theta_0-\theta_1 z_{i-1}\right)^2}{2 \sigma^2}
           \end{align*}
 
           Maximize this function to estimate the parameters. (Much easier to implement)\\
@@ -464,7 +464,7 @@ Using a programming language of your choice, repeat the MLE construction and sim
           Then, we use the conditional MLE to estimate the parameter vector $\Psi=\left(\theta_1, \sigma^2\right)$
           By the above deduction, we get the log likelihood function is
           $$
-            \log L(\Psi)=-\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_t-\theta_1 z_{t-1}\right)^2}{2 \sigma^2}
+            \log L(\Psi)=-\frac{n-1}{2} \log (2 \pi)-\frac{n-1}{2} \log \left(\sigma^2\right)-\sum_{i=2}^n \frac{\left(x_i-\theta_1 z_{i-1}\right)^2}{2 \sigma^2}
           $$
           Then, we have
           $$
